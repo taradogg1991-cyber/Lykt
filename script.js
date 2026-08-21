@@ -10,21 +10,26 @@ const media={
   grass:[['Spritt_e.jpg','img']],
   moss:[['Untitled%20design%20%282%29.mp4','video']],
   money:[
-    ['Screenshot%202026-08-20%20at%2018.53.21.png','img'],
-    ['Screenshot%202026-08-20%20at%2018.53.28.png','img']
+    ['Screenshot%202026-08-21%20at%2017.44.03.png','img'],
+    ['Screenshot%202026-08-21%20at%2017.44.11.png','img']
   ]
 };
 
 const layouts={
-  1:[{left:'73%',top:'29%',width:'15vw',height:'27vh'}],
-  2:[
-    {left:'64%',top:'17%',width:'14vw',height:'24vh'},
-    {left:'80%',top:'61%',width:'12vw',height:'21vh'}
+  orange:[
+    {left:'5%',top:'9%',width:'12vw',height:'21vh'},
+    {left:'76%',top:'14%',width:'13vw',height:'23vh'},
+    {left:'67%',top:'67%',width:'10vw',height:'18vh'}
   ],
-  3:[
-    {left:'61%',top:'13%',width:'14vw',height:'24vh'},
-    {left:'80%',top:'39%',width:'11vw',height:'19vh'},
-    {left:'66%',top:'69%',width:'13vw',height:'22vh'}
+  grass:[
+    {left:'81%',top:'61%',width:'12vw',height:'21vh'}
+  ],
+  moss:[
+    {left:'7%',top:'62%',width:'14vw',height:'24vh'}
+  ],
+  money:[
+    {left:'8%',top:'14%',width:'11vw',height:'19vh'},
+    {left:'70%',top:'51%',width:'18vw',height:'31vh'}
   ]
 };
 
@@ -40,18 +45,18 @@ function showProject(key){
   if(!gallery)return;
   clearGallery();
   const items=media[key]||[];
-  const slots=layouts[Math.min(items.length,3)]||layouts[1];
+  const slots=layouts[key]||[];
   setTimeout(()=>{
     items.forEach((item,i)=>{
       const el=item[1]==='video'?document.createElement('video'):document.createElement('img');
-      const slot=slots[i];
+      const slot=slots[i]||{left:'70%',top:'20%',width:'12vw',height:'20vh'};
       el.className='floating-media';
       el.src=item[0];
       el.style.left=slot.left;
       el.style.top=slot.top;
       el.style.width=slot.width;
       el.style.height=slot.height;
-      el.style.transitionDelay=`${i*140}ms`;
+      el.style.transitionDelay=`${i*160}ms`;
       if(item[1]==='video'){
         el.autoplay=true;
         el.muted=true;
