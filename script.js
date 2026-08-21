@@ -16,15 +16,15 @@ const media={
 };
 
 const layouts={
-  1:[{left:'68%',top:'28%',width:'24vw',height:'44vh'}],
+  1:[{left:'73%',top:'29%',width:'15vw',height:'27vh'}],
   2:[
-    {left:'63%',top:'13%',width:'22vw',height:'34vh'},
-    {left:'71%',top:'56%',width:'21vw',height:'31vh'}
+    {left:'64%',top:'17%',width:'14vw',height:'24vh'},
+    {left:'80%',top:'61%',width:'12vw',height:'21vh'}
   ],
   3:[
-    {left:'61%',top:'8%',width:'21vw',height:'30vh'},
-    {left:'76%',top:'38%',width:'18vw',height:'27vh'},
-    {left:'58%',top:'63%',width:'20vw',height:'28vh'}
+    {left:'61%',top:'13%',width:'14vw',height:'24vh'},
+    {left:'80%',top:'39%',width:'11vw',height:'19vh'},
+    {left:'66%',top:'69%',width:'13vw',height:'22vh'}
   ]
 };
 
@@ -32,7 +32,7 @@ function clearGallery(){
   if(!gallery)return;
   [...gallery.children].forEach((el,i)=>{
     el.classList.remove('show');
-    setTimeout(()=>el.remove(),520+i*60);
+    setTimeout(()=>el.remove(),900+i*80);
   });
 }
 
@@ -51,6 +51,7 @@ function showProject(key){
       el.style.top=slot.top;
       el.style.width=slot.width;
       el.style.height=slot.height;
+      el.style.transitionDelay=`${i*140}ms`;
       if(item[1]==='video'){
         el.autoplay=true;
         el.muted=true;
@@ -61,7 +62,7 @@ function showProject(key){
       gallery.appendChild(el);
       requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
     });
-  },180);
+  },120);
 }
 
 projects.forEach(project=>{
